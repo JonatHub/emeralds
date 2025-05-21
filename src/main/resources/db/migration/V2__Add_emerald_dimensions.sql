@@ -1,0 +1,3 @@
+ALTER TABLE emeralds
+ADD COLUMN length_mm DECIMAL(5,2),
+ADD COLUMN width_mm DECIMAL(5,2); 
