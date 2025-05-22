@@ -20,7 +20,7 @@ public class EmeraldController {
     private final EmeraldService emeraldService;
 
     @PostMapping
-    @PreAuthorize("hasAuthority('SCOPE_read:client_grants')")
+    @PreAuthorize("hasAuthority('SCOPE_write:emeralds')")
     public ResponseEntity<Emerald> createEmerald(@Valid @RequestBody CreateEmeraldRequest request) {
         Emerald emerald = emeraldService.createEmerald(request);
         
