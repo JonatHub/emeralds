@@ -6,6 +6,7 @@ import com.almaesmeralda.emeralds.service.EmeraldService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -19,6 +20,7 @@ public class EmeraldController {
     private final EmeraldService emeraldService;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('SCOPE_read:client_grants')")
     public ResponseEntity<Emerald> createEmerald(@Valid @RequestBody CreateEmeraldRequest request) {
         Emerald emerald = emeraldService.createEmerald(request);
         
