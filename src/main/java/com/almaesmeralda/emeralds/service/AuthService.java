@@ -52,7 +52,7 @@ public class AuthService {
             Map<String, Object> claims = new HashMap<>();
             claims.put("username", loginRequest.getUsername());
             claims.put("role", "ADMIN");
-            claims.put("scope", "write:emeralds");
+            claims.put("scope", "write:emeralds create:user");
 
             // Generar el token con RS256
             return Jwts.builder()
