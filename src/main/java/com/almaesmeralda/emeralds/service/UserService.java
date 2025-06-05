@@ -18,7 +18,8 @@ public class UserService{
         User user = new User();
         user.setName(request.getName());
         user.setEmail(request.getEmail());
-        // setear otros campos
+        user.setPassword(request.getPassword());
+        user.setRole("USER");
         return userRepository.save(user);
     }
 }
