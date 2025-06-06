@@ -1,16 +1,14 @@
 package com.almaesmeralda.emeralds.controller;
 
 import com.almaesmeralda.emeralds.dto.CreateUserRequest;
+import com.almaesmeralda.emeralds.dto.UpdateUserRequest;
 import com.almaesmeralda.emeralds.model.User;
 import com.almaesmeralda.emeralds.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -35,4 +33,15 @@ public class UserController {
 
         return ResponseEntity.created(location).body(user);
     }
+
+    @PutMapping("/{id}")
+    @PreAuthorize("hasAuthority('SCOPE_write:users')")
+    public ResponseEntity<User> updateUser(
+            @PathVariable Long id,
+            @Valid @RequestBody UpdateUserRequest request) {
+
+        User updatedUser = userService.updateUser(id, request);
+        return ResponseEntity.ok(updatedUser);
+    }
+
 }

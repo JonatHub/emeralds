@@ -1,7 +1,6 @@
 package com.almaesmeralda.emeralds.controller;
 
 import com.almaesmeralda.emeralds.dto.CartItemResponse;
-import com.almaesmeralda.emeralds.model.CartItem;
 import com.almaesmeralda.emeralds.service.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
