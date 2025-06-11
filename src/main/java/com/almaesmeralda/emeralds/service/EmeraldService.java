@@ -1,11 +1,15 @@
 package com.almaesmeralda.emeralds.service;
 
 import com.almaesmeralda.emeralds.dto.CreateEmeraldRequest;
+import com.almaesmeralda.emeralds.dto.EmeraldResponse;
 import com.almaesmeralda.emeralds.model.Emerald;
 import com.almaesmeralda.emeralds.repository.EmeraldRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -31,4 +35,24 @@ public class EmeraldService {
 
         return emeraldRepository.save(emerald);
     }
+
+    public List<EmeraldResponse> getAllEmeralds() {
+        return emeraldRepository.findAll().stream()
+                .map(emerald -> new EmeraldResponse(
+                        emerald.getId(),
+                        emerald.getName(),
+                        emerald.getDescription(),
+                        emerald.getPrice(),
+                        emerald.getCaratWeight(),
+                        emerald.getOrigin(),
+                        emerald.getCertification(),
+                        emerald.getClarity(),
+                        emerald.getColor(),
+                        emerald.getImageUrl(),
+                        emerald.getLengthMm(),
+                        emerald.getWidthMm()
+                ))
+                .collect(Collectors.toList());
+    }
+
 } 
