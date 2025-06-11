@@ -35,9 +35,23 @@ public class EmeraldController {
         return ResponseEntity.created(location).body(emerald);
     }
 
-    @GetMapping
+    /*@GetMapping
     public ResponseEntity<List<EmeraldResponse>> getAllEmeralds() {
         List<EmeraldResponse> emeralds = emeraldService.getAllEmeralds();
         return ResponseEntity.ok(emeralds);
     }
+
+     */
+
+    @GetMapping
+    public ResponseEntity<List<Emerald>> getEmeraldsByParams(
+            @RequestParam(required = false) Long id,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String origin,
+            @RequestParam(required = false) String clarity
+    ) {
+        List<Emerald> emeralds = emeraldService.getEmeraldsByParams(id,name, origin, clarity);
+        return ResponseEntity.ok(emeralds);
+    }
+
 } 
