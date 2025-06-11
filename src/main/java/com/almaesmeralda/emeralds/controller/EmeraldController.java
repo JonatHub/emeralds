@@ -36,7 +36,6 @@ public class EmeraldController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('SCOPE_write:emeralds')")
     public ResponseEntity<List<EmeraldResponse>> getAllEmeralds() {
         List<EmeraldResponse> emeralds = emeraldService.getAllEmeralds();
         return ResponseEntity.ok(emeralds);
