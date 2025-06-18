@@ -9,9 +9,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,7 +29,7 @@ public class EmeraldService {
         emerald.setCertification(request.getCertification());
         emerald.setClarity(request.getClarity());
         emerald.setColor(request.getColor());
-        emerald.setImageUrl(request.getImageUrl());
+        emerald.setImageUrls(request.getImageUrls());
         emerald.setStockQuantity(request.getStockQuantity());
         emerald.setLengthMm(request.getLengthMm());
         emerald.setWidthMm(request.getWidthMm());
@@ -51,7 +49,7 @@ public class EmeraldService {
                         emerald.getCertification(),
                         emerald.getClarity(),
                         emerald.getColor(),
-                        emerald.getImageUrl(),
+                        emerald.getImageUrls(),
                         emerald.getLengthMm(),
                         emerald.getWidthMm()
                 ))

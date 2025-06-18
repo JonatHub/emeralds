@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Positive;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 public class CreateEmeraldRequest {
@@ -33,7 +34,7 @@ public class CreateEmeraldRequest {
     @NotNull(message = "El color es requerido")
     private String color;
 
-    private String imageUrl;
+    private List<String> imageUrls;
 
     @NotNull(message = "La cantidad en stock es requerida")
     @Positive(message = "La cantidad debe ser mayor a 0")

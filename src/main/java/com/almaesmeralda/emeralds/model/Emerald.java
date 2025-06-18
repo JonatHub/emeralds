@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "emeralds")
@@ -46,8 +47,10 @@ public class Emerald {
     @NotNull
     private String color;
 
+    @ElementCollection
+    @CollectionTable(name = "emerald_images", joinColumns = @JoinColumn(name = "emerald_id"))
     @Column(name = "image_url")
-    private String imageUrl;
+    private List<String> imageUrls;
 
     @NotNull
     @Positive

@@ -1,6 +1,7 @@
 package com.almaesmeralda.emeralds.dto;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public record EmeraldResponse(
         Long id,
@@ -12,7 +13,7 @@ public record EmeraldResponse(
         String certification,
         String clarity,
         String color,
-        String imageUrl,
+        List<String> imageUrls,
         BigDecimal lengthMm,
         BigDecimal widthMm
 ) {}
