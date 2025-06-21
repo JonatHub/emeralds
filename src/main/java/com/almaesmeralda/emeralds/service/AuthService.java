@@ -1,5 +1,6 @@
 package com.almaesmeralda.emeralds.service;
 
+import com.almaesmeralda.emeralds.dto.ApiResponse;
 import com.almaesmeralda.emeralds.dto.LoginRequest;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -12,6 +13,7 @@ import java.nio.file.Files;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.spec.PKCS8EncodedKeySpec;
+import java.time.ZonedDateTime;
 import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
@@ -66,6 +68,17 @@ public class AuthService {
             throw new RuntimeException("Error generating token", e);
         }
     }
+
+    public ApiResponse processForgotPassword(com.almaesmeralda.auth.dto.ForgotPasswordRequest request) {
+        // Aquí puedes validar si el email existe, generar un token, y enviar el correo
+        // Por simplicidad, simulamos una respuesta exitosa
+        return ApiResponse.builder()
+                .success(true)
+                .message("Se ha enviado un email de recuperación a " + request.getEmail())
+                .timestamp(ZonedDateTime.now())
+                .build();
+    }
+
 
     public boolean validateToken(String token) {
         // Aquí implementarías la validación del token

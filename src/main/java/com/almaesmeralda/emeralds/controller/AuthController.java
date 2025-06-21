@@ -1,7 +1,9 @@
 package com.almaesmeralda.emeralds.controller;
 
+import com.almaesmeralda.emeralds.dto.ApiResponse;
 import com.almaesmeralda.emeralds.dto.LoginRequest;
 import com.almaesmeralda.emeralds.service.AuthService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,4 +29,11 @@ public class AuthController {
             "expires_in", "86400"
         ));
     }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<ApiResponse> forgotPassword(@Valid @RequestBody com.almaesmeralda.auth.dto.ForgotPasswordRequest request) {
+        ApiResponse response = authService.processForgotPassword(request);
+        return ResponseEntity.ok(response);
+    }
+
 } 
